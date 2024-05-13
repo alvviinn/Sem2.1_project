@@ -80,6 +80,9 @@
 .socials{padding: 50px;
 }
 a:link{color: orange;}
+a:visited{
+    color: orange;
+}
 
 a:hover {
     color: white;

@@ -1,0 +1,25 @@
+.form{
+   
+}
+.body{
+    margin: -5px;
+   
+}
+.back{
+
+}
+.login{
+    margin-top: -650px;
+ 
+}
+input{
+    width: 200px;
+    padding: 10px;
+    background-color: orange;
+    border-radius: 3px;
+    font-size: 16px;
+    border: none;
+}
+.button:hover{
+    color: white;
+}
