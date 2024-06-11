@@ -60,6 +60,7 @@
     margin-right: 500px;
     border-radius: 15px;
     border: none;
+    align-content: center;
 
 }
 .button:hover {
@@ -79,9 +80,9 @@
 }
 .socials{padding: 50px;
 }
-a:link{color: orange;}
+a:link{color: rgb(212, 126, 51);}
 a:visited{
-    color: orange;
+    color: rgb(212, 126, 51);
 }
 
 a:hover {

@@ -1,0 +1,35 @@
+.form{
+   
+}
+.iform{
+    background-color: rgb(212, 126, 51);
+    width: 500px;
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+    margin-top: -900px;
+    position: relative;
+    border-radius: 15px;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+}
+.body{
+    margin: 0px;
+}
+input{
+    width: 200px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 3px;
+    font-size: 16px;
+    border: none;
+}
