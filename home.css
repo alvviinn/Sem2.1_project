@@ -28,6 +28,7 @@
 
     
 }
+
 .b-nav:hover{
     background-color: black;
 
@@ -52,11 +53,12 @@
   
 
 }
+
 .button{
     text-align: center;
-    padding-left: 200px;
-    padding-right: 200px;
-    margin-left: 518px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: 500px;
     margin-right: 500px;
     border-radius: 15px;
     border: none;

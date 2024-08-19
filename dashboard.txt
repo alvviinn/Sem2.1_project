@@ -1,0 +1,84 @@
+<?php
+session_start();
+if (!isset($_SESSION['id'])) {
+    header("Location: dlogin.php");
+    exit();
+}
+?>
+<?php
+$db_servername = "localhost";
+$db_username = "root";
+$db_password = "";
+$db_name = "foodies_register";
+
+$conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM user_reg";
+$result = $conn->query($sql);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div style="text-align: right;">
+        Welcome, <?php echo $_SESSION['username']; ?>
+         <a href="logout.php">Logout</a>
+    </div>
+
+    <?php if ($_SESSION['user_type'] == 'Administrator'): ?>
+        <h2>User Registration Table</h2>
+    <table>
+        <tr>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Username</th>
+            <th>User Type</th>
+        </tr>
+        <?php
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<tr><td>".$row["id"]."</td><td>".$row["fname"]."</td><td>".$row["sname"]."</td><td>".$row["Email"]."</td><td>".$row["Phone_number"]."</td><td>".$row["username"]."</td><td>".$row["user_type"]."</td></tr>";
+            }
+        } else {
+            echo "<tr><td colspan='7'>No users found</td></tr>";
+        }
+        ?>
+    </table>
+
+    <?php elseif ($_SESSION['user_type'] == 'RecipeOwner'): ?>
+        
+        <?php
+     
+        $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT username FROM user_reg WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $_SESSION['id']);
+        $stmt->execute();
+        $stmt->bind_result($username);
+        $stmt->fetch();
+        echo "Username: " . $username;
+        $stmt->close();
+        $conn->close();
+        ?>
+      <h2>Add a Recipe</h2>
+      <p><a href="Addrecipies.html">Go to Add Recipe Page</a></p>
+    <?php endif; ?>
+</body>
+</html>

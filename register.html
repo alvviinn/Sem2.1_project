@@ -7,13 +7,24 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="register.css">
+    <script>
+        function toggleSpecialPasswordField() {
+            var userType = document.getElementById("user_type").value;
+            var specialPasswordField = document.getElementById("special_password_field");
+            if (userType === 'Administrator') {
+                specialPasswordField.style.display = 'block';
+            } else {
+                specialPasswordField.style.display = 'none';
+            }
+        }
+    </script>
 </head>
-<body class="body">
+<body class="body" onload="toggleSpecialPasswordField()">
     <img style="width: 100%;" class="back" src="images/top-view-empty-menu-book-with-salad-cheese.jpg" alt="Background image">
 
     <div class="form" style="text-align: center;">
         <div class="iform">
-            <form class="register" action="http://localhost/HTML_sem_project/dregister.php" method="post">
+            <form class="register" action="dregister.php" method="post">
                 <h1 style="text-align: center; color: white;">Please fill out this form</h1>
 
                 <div style="padding-top: 15px;">
@@ -44,6 +55,19 @@
                 <div style="padding-top: 15px;">
                     <label for="password"></label>
                     <input type="password" id="password" name="Password" placeholder="Password" required>
+                </div>
+
+                <div style="padding-top: 15px;">
+                    <label for="user_type">User Type:</label>
+                    <select id="user_type" name="user_type" onchange="toggleSpecialPasswordField()" required>
+                        <option value="RecipeOwner">Recipe Owner</option>
+                        <option value="Administrator">Administrator</option>
+                    </select>
+                </div>
+
+                <div id="special_password_field" style="display: none; padding-top: 15px;">
+                    <label for="special_password">Special Password for Administrators:</label>
+                    <input type="password" id="special_password" name="special_password" placeholder="Special Password">
                 </div>
 
                 <div style="padding-top: 15px;">
